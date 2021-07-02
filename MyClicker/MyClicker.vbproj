@@ -136,30 +136,19 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\repeat-8.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\right-8.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\setting-8.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\time-8.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\click-time-8.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\icon-8.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\left-8.png" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="icon.ico" />
+    <None Include="Resources\right-cursor.ico" />
+    <None Include="Resources\left-cursor.ico" />
     <None Include="Resources\disable-repeat-8.png" />
     <None Include="Resources\disable-click-time-8.png" />
+    <None Include="Resources\click-time-8.png" />
+    <None Include="Resources\time-8.png" />
+    <None Include="Resources\setting-8.png" />
+    <None Include="Resources\right-cursor-8.png" />
+    <None Include="Resources\right-8.png" />
+    <None Include="Resources\repeat-8.png" />
+    <None Include="Resources\left-8.png" />
+    <None Include="Resources\icon-8.png" />
     <None Include="Resources\disable-time-8.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

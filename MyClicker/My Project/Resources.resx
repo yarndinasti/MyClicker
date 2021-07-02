@@ -136,11 +136,20 @@
   <data name="left_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\left-8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="left_cursor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\left-cursor.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="repeat_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\repeat-8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="right_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\right-8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="right_cursor" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\right-cursor.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="right_cursor_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\right-cursor-8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="setting_8" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\setting-8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

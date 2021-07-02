@@ -29,17 +29,18 @@ Partial Class Form1
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.LblInfo = New System.Windows.Forms.Label()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.HoldClickPic = New System.Windows.Forms.PictureBox()
-        Me.RepeatPic = New System.Windows.Forms.PictureBox()
-        Me.SettingBtn = New System.Windows.Forms.PictureBox()
-        Me.DelayPic = New System.Windows.Forms.PictureBox()
-        Me.MousePic = New System.Windows.Forms.PictureBox()
         Me.HoldClickLbl = New System.Windows.Forms.Label()
         Me.HoldClickBtn = New System.Windows.Forms.Button()
         Me.DelayLbl = New System.Windows.Forms.Label()
         Me.DelayBtn = New System.Windows.Forms.Button()
         Me.RepeatBtn = New System.Windows.Forms.Button()
         Me.LblRepeat = New System.Windows.Forms.Label()
+        Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
+        Me.HoldClickPic = New System.Windows.Forms.PictureBox()
+        Me.RepeatPic = New System.Windows.Forms.PictureBox()
+        Me.SettingBtn = New System.Windows.Forms.PictureBox()
+        Me.DelayPic = New System.Windows.Forms.PictureBox()
+        Me.MousePic = New System.Windows.Forms.PictureBox()
         Me.Panel1.SuspendLayout()
         CType(Me.HoldClickPic, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepeatPic, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -84,6 +85,66 @@ Partial Class Form1
         Me.LblInfo.Size = New System.Drawing.Size(85, 13)
         Me.LblInfo.TabIndex = 0
         Me.LblInfo.Text = "Press F2 to Start"
+        '
+        'HoldClickLbl
+        '
+        Me.HoldClickLbl.AutoSize = True
+        Me.HoldClickLbl.Location = New System.Drawing.Point(46, 213)
+        Me.HoldClickLbl.Name = "HoldClickLbl"
+        Me.HoldClickLbl.Size = New System.Drawing.Size(58, 13)
+        Me.HoldClickLbl.TabIndex = 5
+        Me.HoldClickLbl.Text = "0 Seconds"
+        '
+        'HoldClickBtn
+        '
+        Me.HoldClickBtn.Location = New System.Drawing.Point(168, 207)
+        Me.HoldClickBtn.Name = "HoldClickBtn"
+        Me.HoldClickBtn.Size = New System.Drawing.Size(91, 25)
+        Me.HoldClickBtn.TabIndex = 6
+        Me.HoldClickBtn.Text = "Edit"
+        Me.HoldClickBtn.UseVisualStyleBackColor = True
+        '
+        'DelayLbl
+        '
+        Me.DelayLbl.AutoSize = True
+        Me.DelayLbl.Location = New System.Drawing.Point(46, 151)
+        Me.DelayLbl.Name = "DelayLbl"
+        Me.DelayLbl.Size = New System.Drawing.Size(58, 13)
+        Me.DelayLbl.TabIndex = 5
+        Me.DelayLbl.Text = "0 Seconds"
+        '
+        'DelayBtn
+        '
+        Me.DelayBtn.Location = New System.Drawing.Point(168, 145)
+        Me.DelayBtn.Name = "DelayBtn"
+        Me.DelayBtn.Size = New System.Drawing.Size(91, 25)
+        Me.DelayBtn.TabIndex = 6
+        Me.DelayBtn.Text = "Edit"
+        Me.DelayBtn.UseVisualStyleBackColor = True
+        '
+        'RepeatBtn
+        '
+        Me.RepeatBtn.Location = New System.Drawing.Point(168, 176)
+        Me.RepeatBtn.Name = "RepeatBtn"
+        Me.RepeatBtn.Size = New System.Drawing.Size(91, 23)
+        Me.RepeatBtn.TabIndex = 8
+        Me.RepeatBtn.Text = "Edit"
+        Me.RepeatBtn.UseVisualStyleBackColor = True
+        '
+        'LblRepeat
+        '
+        Me.LblRepeat.AutoSize = True
+        Me.LblRepeat.Location = New System.Drawing.Point(46, 181)
+        Me.LblRepeat.Name = "LblRepeat"
+        Me.LblRepeat.Size = New System.Drawing.Size(13, 13)
+        Me.LblRepeat.TabIndex = 9
+        Me.LblRepeat.Text = "0"
+        '
+        'NotifyIcon1
+        '
+        Me.NotifyIcon1.Icon = CType(resources.GetObject("NotifyIcon1.Icon"), System.Drawing.Icon)
+        Me.NotifyIcon1.Text = "NotifyIcon1"
+        Me.NotifyIcon1.Visible = True
         '
         'HoldClickPic
         '
@@ -156,60 +217,6 @@ Partial Class Form1
         Me.MousePic.TabStop = False
         Me.ToolTip1.SetToolTip(Me.MousePic, "Mouse Button")
         '
-        'HoldClickLbl
-        '
-        Me.HoldClickLbl.AutoSize = True
-        Me.HoldClickLbl.Location = New System.Drawing.Point(46, 213)
-        Me.HoldClickLbl.Name = "HoldClickLbl"
-        Me.HoldClickLbl.Size = New System.Drawing.Size(58, 13)
-        Me.HoldClickLbl.TabIndex = 5
-        Me.HoldClickLbl.Text = "0 Seconds"
-        '
-        'HoldClickBtn
-        '
-        Me.HoldClickBtn.Location = New System.Drawing.Point(168, 207)
-        Me.HoldClickBtn.Name = "HoldClickBtn"
-        Me.HoldClickBtn.Size = New System.Drawing.Size(91, 25)
-        Me.HoldClickBtn.TabIndex = 6
-        Me.HoldClickBtn.Text = "Edit"
-        Me.HoldClickBtn.UseVisualStyleBackColor = True
-        '
-        'DelayLbl
-        '
-        Me.DelayLbl.AutoSize = True
-        Me.DelayLbl.Location = New System.Drawing.Point(46, 151)
-        Me.DelayLbl.Name = "DelayLbl"
-        Me.DelayLbl.Size = New System.Drawing.Size(58, 13)
-        Me.DelayLbl.TabIndex = 5
-        Me.DelayLbl.Text = "0 Seconds"
-        '
-        'DelayBtn
-        '
-        Me.DelayBtn.Location = New System.Drawing.Point(168, 145)
-        Me.DelayBtn.Name = "DelayBtn"
-        Me.DelayBtn.Size = New System.Drawing.Size(91, 25)
-        Me.DelayBtn.TabIndex = 6
-        Me.DelayBtn.Text = "Edit"
-        Me.DelayBtn.UseVisualStyleBackColor = True
-        '
-        'RepeatBtn
-        '
-        Me.RepeatBtn.Location = New System.Drawing.Point(168, 176)
-        Me.RepeatBtn.Name = "RepeatBtn"
-        Me.RepeatBtn.Size = New System.Drawing.Size(91, 23)
-        Me.RepeatBtn.TabIndex = 8
-        Me.RepeatBtn.Text = "Edit"
-        Me.RepeatBtn.UseVisualStyleBackColor = True
-        '
-        'LblRepeat
-        '
-        Me.LblRepeat.AutoSize = True
-        Me.LblRepeat.Location = New System.Drawing.Point(46, 181)
-        Me.LblRepeat.Name = "LblRepeat"
-        Me.LblRepeat.Size = New System.Drawing.Size(13, 13)
-        Me.LblRepeat.TabIndex = 9
-        Me.LblRepeat.Text = "0"
-        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -261,4 +268,5 @@ Partial Class Form1
     Friend WithEvents RepeatPic As PictureBox
     Friend WithEvents RepeatBtn As Button
     Friend WithEvents LblRepeat As Label
+    Friend WithEvents NotifyIcon1 As NotifyIcon
 End Class
