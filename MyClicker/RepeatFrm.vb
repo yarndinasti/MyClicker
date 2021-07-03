@@ -17,11 +17,24 @@ Public Class RepeatFrm
   End Sub
 
   Private Sub saveBtn_Click(sender As Object, e As EventArgs) Handles saveBtn.Click
+    If ComboRepeat.SelectedIndex = 2 AndAlso RepeatNum.Value < 30 Then
+      MessageBox.Show("Duration repeat must be between 30 seconds or more", "Error",
+                      MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+      Return
+
+    ElseIf ComboRepeat.SelectedIndex = 1 AndAlso RepeatNum.Value < 1 Then
+      MessageBox.Show("Amount repeat must be between 2 clicks or more", "Error",
+                     MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+      Return
+    End If
+
     SaveSettings("user.json", "repeat", RepeatNum.Value, "value")
     SaveSettings("user.json", "repeat", ComboRepeat.SelectedIndex, "type")
 
     ResetRepeatView()
-    Me.Close()
+    Close()
   End Sub
 
   Private Sub RepeatFrm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing

@@ -13,12 +13,10 @@ Module First
   End Sub
 
   Private Function CreateUsrFile() As String
-    Dim duration As JObject = New JObject(New JProperty("hours", 0),
-                                          New JProperty("minutes", 0),
-                                          New JProperty("seconds", 1),
-                                          New JProperty("interval", 0))
+    Dim duration As JObject = New JObject(New JProperty("value", 250),
+                                          New JProperty("type", 0))
 
-    Dim repeat As JObject = New JObject(New JProperty("value", 1),
+    Dim repeat As JObject = New JObject(New JProperty("value", 2),
                                           New JProperty("type", 0))
 
     Return New JObject(New JProperty("click", 0),

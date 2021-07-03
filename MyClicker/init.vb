@@ -11,7 +11,9 @@ Module init
         Form1.MousePic.Tag = 0
     End Select
 
+    ResetTimeView()
     ResetRepeatView()
+    ResetTimeClickView()
   End Sub
 
   Public Sub HoldClickOpt()
@@ -44,11 +46,11 @@ Module init
       Case 0
         count = "Unlimited"
       Case 1
-        count = "Click"
+        count = "click"
       Case 2
-        count = "Seconds"
+        count = "sec"
       Case 3
-        count = "Minutes"
+        count = "min"
     End Select
 
     Form1.LblRepeat.Text = IIf(Not CInt(settings("repeat")("type")) = 0,
@@ -60,4 +62,31 @@ Module init
     End If
   End Sub
 
+  Public Sub ResetTimeView()
+    Dim settings As JObject = GetSettings("user.json")
+    Dim count As String = ""
+
+    Select Case CInt(settings("duration")("type"))
+      Case 0
+        count = "ms"
+      Case 1
+        count = "sec"
+    End Select
+
+    Form1.DelayLbl.Text = CStr(settings("duration")("value")) + " " + count
+  End Sub
+
+  Public Sub ResetTimeClickView()
+    Dim settings As JObject = GetSettings("user.json")
+    Dim count As String = ""
+
+    Select Case CInt(settings("duration_click")("type"))
+      Case 0
+        count = "ms"
+      Case 1
+        count = "sec"
+    End Select
+
+    Form1.HoldClickLbl.Text = CStr(settings("duration_click")("value")) + " " + count
+  End Sub
 End Module

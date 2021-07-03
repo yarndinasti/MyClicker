@@ -29,4 +29,14 @@ Public Class Form1
       ChangeClick()
     End If
   End Sub
+
+  Private Sub DelayBtn_Click(sender As Object, e As EventArgs) Handles DelayBtn.Click
+    TimeFrm.form_id = 1
+    TimeFrm.ShowDialog()
+  End Sub
+
+  Private Sub HoldClickBtn_Click(sender As Object, e As EventArgs) Handles HoldClickBtn.Click
+    TimeFrm.form_id = 2
+    TimeFrm.ShowDialog()
+  End Sub
 End Class

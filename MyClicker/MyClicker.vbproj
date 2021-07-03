@@ -108,6 +108,12 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="SaveServices.vb" />
+    <Compile Include="TimeFrm.Designer.vb">
+      <DependentUpon>TimeFrm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TimeFrm.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form1.resx">
@@ -121,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RepeatFrm.resx">
       <DependentUpon>RepeatFrm.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TimeFrm.resx">
+      <DependentUpon>TimeFrm.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
