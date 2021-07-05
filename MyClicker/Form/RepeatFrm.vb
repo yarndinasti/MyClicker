@@ -11,7 +11,7 @@ Public Class RepeatFrm
       ComboRepeat.Items.Add(TypeRepeat)
     Next
 
-    Dim setting As JObject = GetSettings("user.json")
+    Dim setting As JObject = GetSettings("user.umc")
     ComboRepeat.SelectedIndex = setting("repeat")("type")
     RepeatNum.Value = setting("repeat")("value")
   End Sub
@@ -30,15 +30,15 @@ Public Class RepeatFrm
       Return
     End If
 
-    SaveSettings("user.json", "repeat", RepeatNum.Value, "value")
-    SaveSettings("user.json", "repeat", ComboRepeat.SelectedIndex, "type")
+    SaveSettings("user.umc", "repeat", RepeatNum.Value, "value")
+    SaveSettings("user.umc", "repeat", ComboRepeat.SelectedIndex, "type")
 
     ResetRepeatView()
     Close()
   End Sub
 
   Private Sub RepeatFrm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-    Dim setting As JObject = GetSettings("user.json")
+    Dim setting As JObject = GetSettings("user.umc")
     If Not ComboRepeat.SelectedIndex = CInt(setting("repeat")("type")) Or Not RepeatNum.Value = setting("repeat")("value") Then
       Dim confirm As DialogResult = MessageBox.Show("Do you want to exit without saving your settings?",
                                                     "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question)

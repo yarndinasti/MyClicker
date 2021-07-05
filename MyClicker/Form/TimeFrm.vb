@@ -5,7 +5,7 @@ Public Class TimeFrm
   Public form_id As Integer
 
   Private Sub TimeFrm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-    Dim settings As JObject = GetSettings("user.json")
+    Dim settings As JObject = GetSettings("user.umc")
     Dim variable As String = IIf(form_id = 1, "duration", "duration_click")
 
     ComboTime.Items.Clear()
@@ -36,8 +36,8 @@ Public Class TimeFrm
       Return
     End If
 
-    SaveSettings("user.json", variable, NumTime.Value, "value")
-    SaveSettings("user.json", variable, ComboTime.SelectedIndex, "type")
+    SaveSettings("user.umc", variable, NumTime.Value, "value")
+    SaveSettings("user.umc", variable, ComboTime.SelectedIndex, "type")
 
     ResetTimeView()
     ResetTimeClickView()
@@ -45,7 +45,7 @@ Public Class TimeFrm
   End Sub
 
   Private Sub TimeFrm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
-    Dim setting As JObject = GetSettings("user.json")
+    Dim setting As JObject = GetSettings("user.umc")
     Dim variable As String = IIf(form_id = 1, "duration", "duration_click")
 
     If Not ComboTime.SelectedIndex = CInt(setting(variable)("type")) Or Not NumTime.Value = setting(variable)("value") Then

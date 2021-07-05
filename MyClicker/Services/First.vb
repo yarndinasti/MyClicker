@@ -1,14 +1,17 @@
 ﻿Imports Newtonsoft.Json.Linq, System.IO
 Module First
   Public Dir As String = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) & "\yansaan\MyClicker"
+  Dim EncFile As New ClsEncryptDecryptFiles(":@]@_W.msJ:L,7Uf")
+
   Public Sub FirstUsrSettings()
     'Check Folder
     If Not Directory.Exists(Dir) Then
       Directory.CreateDirectory(Dir)
     End If
 
-    If Not File.Exists(Path.Combine(Dir, "user.json")) Then
-      File.WriteAllText(Path.Combine(Dir, "user.json"), CreateUsrFile())
+    If Not File.Exists(Path.Combine(Dir, "user.umc")) Then
+      Dim userSettings As Byte() = EncFile.Encryption(CreateUsrFile())
+      File.WriteAllBytes(Path.Combine(Dir, "user.umc"), userSettings)
     End If
   End Sub
 

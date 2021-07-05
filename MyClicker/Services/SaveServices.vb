@@ -1,8 +1,14 @@
-﻿Imports System.Text.RegularExpressions
+﻿Imports System.Text.RegularExpressions, System.Text
 Imports Newtonsoft.Json.Linq, System.IO
 Module SaveServices
+  Dim EncFile As New ClsEncryptDecryptFiles(":@]@_W.msJ:L,7Uf")
+
   Public Function GetSettings(files) As JObject
-    Return JObject.Parse(File.ReadAllText(Path.Combine(Dir, files)))
+    Dim fileSettings = File.ReadAllBytes(Path.Combine(Dir, files))
+    fileSettings = EncFile.Decryption(fileSettings)
+    Dim strSettings = Encoding.Default.GetString(fileSettings)
+
+    Return JObject.Parse(strSettings)
   End Function
 
   Public Sub SaveSettings(files As String, key As String, value As String, Optional key2 As String = "")
@@ -26,6 +32,7 @@ Module SaveServices
       End If
     End If
 
-    File.WriteAllText(Path.Combine(Dir, files), Settings.ToString)
+    Dim save As Byte() = EncFile.Encryption(Settings.ToString)
+    File.WriteAllBytes(Path.Combine(Dir, files), save)
   End Sub
 End Module
