@@ -66,6 +66,7 @@ Partial Class TimeFrm
         Me.Controls.Add(Me.NumTime)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "TimeFrm"
+        Me.ShowInTaskbar = False
         Me.Text = "TimeFrm"
         CType(Me.NumTime, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

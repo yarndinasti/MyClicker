@@ -80,6 +80,7 @@ Partial Class KeySetting
         Me.Controls.Add(Me.btnKey)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "KeySetting"
+        Me.ShowInTaskbar = False
         Me.Text = "Configuration Keys"
         Me.ResumeLayout(False)
         Me.PerformLayout()

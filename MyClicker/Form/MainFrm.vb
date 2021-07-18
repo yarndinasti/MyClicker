@@ -359,7 +359,7 @@ Public Class MainFrm
                       MessageBoxButtons.OKCancel, MessageBoxIcon.Information)
 
       If result = DialogResult.OK Then
-        Process.Start("")
+        Process.Start("https://yansaanid.github.io/myclicker/donate.html")
       End If
     End If
   End Sub

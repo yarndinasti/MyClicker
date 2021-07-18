@@ -450,6 +450,7 @@ Partial Class SettingsFrm
         Me.Controls.Add(Me.TabControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "SettingsFrm"
+        Me.ShowInTaskbar = False
         Me.Text = "References"
         Me.TabControl1.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)

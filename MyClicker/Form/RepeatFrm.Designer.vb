@@ -66,6 +66,7 @@ Partial Class RepeatFrm
         Me.Controls.Add(Me.ComboRepeat)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Name = "RepeatFrm"
+        Me.ShowInTaskbar = False
         Me.Text = "Edit Repeat"
         CType(Me.RepeatNum, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

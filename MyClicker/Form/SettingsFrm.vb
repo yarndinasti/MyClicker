@@ -120,11 +120,11 @@ Public Class SettingsFrm
   Private Sub DonateCombo_Click(sender As Object, e As EventArgs) Handles DonateCombo.Click
     config = GetSettings("config.mcc")
     If CBool(config("unlock")) = False Then
-      Dim result As DialogResult = MessageBox.Show("", "Donation",
+      Dim result As DialogResult = MessageBox.Show("For turn off this feature, please activate this program", "Donation",
                                                    MessageBoxButtons.OKCancel, MessageBoxIcon.Information)
 
       If result = DialogResult.OK Then
-        Process.Start("")
+        Process.Start("https://yansaanid.github.io/myclicker/donate.html")
       End If
       DonateCombo.Checked = True
     Else
@@ -201,5 +201,13 @@ Public Class SettingsFrm
 
   Private Sub GitHubLink_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles GitHubLink.LinkClicked
     Process.Start("https://github.com/yansaan")
+  End Sub
+
+  Private Sub DonateBtn_Click(sender As Object, e As EventArgs) Handles DonateBtn.Click
+    Process.Start("https://yansaanid.github.io/myclicker/donate.html")
+  End Sub
+
+  Private Sub WikiBtn_Click(sender As Object, e As EventArgs) Handles WikiBtn.Click
+    Process.Start("https://github.com/yansaan/MyClicker/wiki")
   End Sub
 End Class
