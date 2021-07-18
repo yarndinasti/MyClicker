@@ -5,7 +5,7 @@
 
 # MyClicker
 
-| Download (Coming Soon) | Tutorial (Coming Soon) |
+| [Download](https://github.com/yansaan/MyClicker/releases/latest/download/MyClickerInstaller.zip) | Tutorial (Coming Soon) |
 | ---------------------- | ---------------------- |
 
 ## Introducion
