@@ -115,7 +115,7 @@ Public Class MainFrm
       While GetAsyncKeyState(config("key_disable")("value")(0))
       End While
 
-      disable = Not disable
+      disabledClick()
 
     ElseIf KeyPressIs(config("key_play")("value").ToObject(Of Integer())) Then
       While GetAsyncKeyState(config("key_play")("value")(0))
@@ -362,5 +362,14 @@ Public Class MainFrm
         Process.Start("https://yansaanid.github.io/myclicker/donate.html")
       End If
     End If
+  End Sub
+
+  Private Sub DisabledClickToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DisabledClickToolStripMenuItem.Click
+    disabledClick()
+  End Sub
+
+  Private Sub disabledClick()
+    disable = Not disable
+    DisabledClickToolStripMenuItem.Checked = disable
   End Sub
 End Class
