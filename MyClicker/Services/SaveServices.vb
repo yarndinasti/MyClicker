@@ -1,11 +1,12 @@
 ﻿Imports System.Text.RegularExpressions, System.Text
 Imports Newtonsoft.Json.Linq, System.IO
 Module SaveServices
-  Dim EncFile As New ClsEncryptDecryptFiles(":@]@_W.msJ:L,7Uf")
+  Dim UserFile As New ClsEncryptDecryptFiles(":@]@_W.msJ:L,7Uf")
+  Dim ConfigFile As New ClsEncryptDecryptFiles(My.Computer.Name)
 
   Public Function GetSettings(files) As JObject
     Dim fileSettings = File.ReadAllBytes(Path.Combine(Dir, files))
-    fileSettings = EncFile.Decryption(fileSettings)
+    fileSettings = IIf(files.Contains("umc"), UserFile, ConfigFile).Decryption(fileSettings)
     Dim strSettings = Encoding.Default.GetString(fileSettings)
 
     Return JObject.Parse(strSettings)
@@ -32,7 +33,7 @@ Module SaveServices
       End If
     End If
 
-    Dim save As Byte() = EncFile.Encryption(Settings.ToString)
+    Dim save As Byte() = IIf(files.Contains("umc"), UserFile, ConfigFile).Encryption(Settings.ToString)
     File.WriteAllBytes(Path.Combine(Dir, files), save)
   End Sub
 End Module

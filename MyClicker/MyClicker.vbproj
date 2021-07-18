@@ -71,6 +71,9 @@
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="SKGL, Version=2.0.4.1, Culture=neutral, PublicKeyToken=6506df92444891d9, processorArchitecture=MSIL">
+      <HintPath>..\packages\SoftwareProtector.1.0.5.1\lib\SKGL.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -94,6 +97,12 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Form\KeySetting.Designer.vb">
+      <DependentUpon>KeySetting.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form\KeySetting.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Form\SettingsFrm.Designer.vb">
       <DependentUpon>SettingsFrm.vb</DependentUpon>
     </Compile>
@@ -106,6 +115,8 @@
     <Compile Include="Form\Stats.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Services\Activation.vb" />
+    <Compile Include="Services\ArrayKey.vb" />
     <Compile Include="Services\ClsEncryptDecryptFiles.vb" />
     <Compile Include="Services\First.vb" />
     <Compile Include="Form\MainFrm.vb">
@@ -140,6 +151,7 @@
     </Compile>
     <Compile Include="Services\KeyPress.vb" />
     <Compile Include="Services\Mouse.vb" />
+    <Compile Include="Services\Running.vb" />
     <Compile Include="Services\SaveServices.vb" />
     <Compile Include="Form\TimeFrm.Designer.vb">
       <DependentUpon>TimeFrm.vb</DependentUpon>
@@ -149,6 +161,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Form\KeySetting.resx">
+      <DependentUpon>KeySetting.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form\MainFrm.resx">
       <DependentUpon>MainFrm.vb</DependentUpon>
     </EmbeddedResource>
@@ -187,6 +202,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
+    <Content Include="LINCENSE.txt" />
+    <Content Include="Software Protector.exe" />
     <None Include="Resources\active-left-cursor.ico" />
     <None Include="Resources\active-right-cursor.ico" />
     <None Include="Resources\active-left-8.png" />
@@ -212,6 +229,17 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="IWshRuntimeLibrary">
+      <Guid>{F935DC20-1CF0-11D0-ADB9-00C04FD58A0B}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

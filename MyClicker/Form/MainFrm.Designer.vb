@@ -41,12 +41,18 @@ Partial Class MainFrm
         Me.RepeatBtn = New System.Windows.Forms.Button()
         Me.LblRepeat = New System.Windows.Forms.Label()
         Me.NotifyIcon1 = New System.Windows.Forms.NotifyIcon(Me.components)
+        Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
+        Me.OpenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.DisabledClickToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ExitToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.Panel1.SuspendLayout()
         CType(Me.HoldClickPic, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.RepeatPic, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SettingBtn, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DelayPic, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MousePic, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'ComboTypeClick
@@ -80,7 +86,7 @@ Partial Class MainFrm
         'LblInfo
         '
         Me.LblInfo.AutoSize = True
-        Me.LblInfo.Location = New System.Drawing.Point(98, 73)
+        Me.LblInfo.Location = New System.Drawing.Point(95, 74)
         Me.LblInfo.Name = "LblInfo"
         Me.LblInfo.Size = New System.Drawing.Size(85, 13)
         Me.LblInfo.TabIndex = 0
@@ -213,11 +219,42 @@ Partial Class MainFrm
         '
         'NotifyIcon1
         '
+        Me.NotifyIcon1.ContextMenuStrip = Me.ContextMenuStrip1
         Me.NotifyIcon1.Icon = CType(resources.GetObject("NotifyIcon1.Icon"), System.Drawing.Icon)
         Me.NotifyIcon1.Text = "MyClicker"
         Me.NotifyIcon1.Visible = True
         '
-        'Form1
+        'ContextMenuStrip1
+        '
+        Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpenToolStripMenuItem, Me.ToolStripSeparator1, Me.DisabledClickToolStripMenuItem, Me.ExitToolStripMenuItem})
+        Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(149, 76)
+        '
+        'OpenToolStripMenuItem
+        '
+        Me.OpenToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.OpenToolStripMenuItem.Name = "OpenToolStripMenuItem"
+        Me.OpenToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.OpenToolStripMenuItem.Text = "Open"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(145, 6)
+        '
+        'DisabledClickToolStripMenuItem
+        '
+        Me.DisabledClickToolStripMenuItem.Name = "DisabledClickToolStripMenuItem"
+        Me.DisabledClickToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.DisabledClickToolStripMenuItem.Text = "Disabled Click"
+        '
+        'ExitToolStripMenuItem
+        '
+        Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(148, 22)
+        Me.ExitToolStripMenuItem.Text = "Exit"
+        '
+        'MainFrm
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -239,7 +276,7 @@ Partial Class MainFrm
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
-        Me.Name = "Form1"
+        Me.Name = "MainFrm"
         Me.Text = "MyClicker"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
@@ -248,6 +285,7 @@ Partial Class MainFrm
         CType(Me.SettingBtn, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DelayPic, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MousePic, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -270,4 +308,9 @@ Partial Class MainFrm
     Friend WithEvents RepeatBtn As Button
     Friend WithEvents LblRepeat As Label
     Friend WithEvents NotifyIcon1 As NotifyIcon
+    Friend WithEvents ContextMenuStrip1 As ContextMenuStrip
+    Friend WithEvents OpenToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents DisabledClickToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ExitToolStripMenuItem As ToolStripMenuItem
 End Class

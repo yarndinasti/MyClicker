@@ -1,4 +1,4 @@
-﻿Imports Newtonsoft.Json.Linq, System.IO
+﻿Imports Newtonsoft.Json.Linq
 Public Class RepeatFrm
   Private Sub ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboRepeat.SelectedIndexChanged
     RepeatNum.Enabled = CBool(Not ComboRepeat.SelectedItem = "Unlimited")
@@ -43,6 +43,10 @@ Public Class RepeatFrm
       Dim confirm As DialogResult = MessageBox.Show("Do you want to exit without saving your settings?",
                                                     "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
       e.Cancel = CBool(confirm = DialogResult.No)
+    End If
+
+    If e.Cancel = False Then
+      MainFrm.HotKeyTimer.Start()
     End If
   End Sub
 End Class

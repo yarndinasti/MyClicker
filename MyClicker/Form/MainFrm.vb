@@ -12,17 +12,35 @@ Public Class MainFrm
   Public WithEvents StartTimer As New Timer
 
   Dim AFK As Boolean = False
+  Dim ClosedForm As Boolean = False
+  Dim disable As Boolean = False
 
   Public timeDelay As Integer = 0
   Public timePress As Integer = 0
 
-  Dim valueRepeat As Integer = 0
-  Dim secondRepeat As Integer = 0
+  Public valueRepeat As Integer = 0
+  Public secondRepeat As Integer = 0
 
   Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-    Call First.FirstUsrSettings()
+    CenterToScreen()
 
+    If AlreadyRunning() Then
+      'RunningKey.Enabled = False
+      MessageBox.Show(
+        "Another instance is already running.",
+        "Error",
+    MessageBoxButtons.OK,
+    MessageBoxIcon.Exclamation)
+      Me.Close()
+      Return
+    End If
+
+    Call FirstUsrSettings()
+    Dim config As JObject = GetSettings("config.mcc")
     Dim data As JObject = GetSettings("user.umc")
+
+    Activation.Activated()
+
     initial()
     Dim TypeClicks() As String = {"Single Click", "Double Click", "Press Click"}
     For Each TypeClick As String In TypeClicks
@@ -35,7 +53,9 @@ Public Class MainFrm
     HotKeyTimer.Interval = 5
     HotKeyTimer.Enabled = True
 
-    Stats.Show()
+    If CBool(config("debug")) = True Then
+      Stats.Show()
+    End If
   End Sub
 
   Private Sub ComboTypeClick_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ComboTypeClick.SelectedIndexChanged
@@ -44,6 +64,7 @@ Public Class MainFrm
   End Sub
 
   Private Sub RepeatBtn_Click(sender As Object, e As EventArgs) Handles RepeatBtn.Click
+    HotKeyTimer.Stop()
     RepeatFrm.ShowDialog()
   End Sub
 
@@ -54,28 +75,53 @@ Public Class MainFrm
   End Sub
 
   Private Sub DelayBtn_Click(sender As Object, e As EventArgs) Handles DelayBtn.Click
+    HotKeyTimer.Stop()
     TimeFrm.form_id = 1
     TimeFrm.ShowDialog()
   End Sub
 
   Private Sub HoldClickBtn_Click(sender As Object, e As EventArgs) Handles HoldClickBtn.Click
+    HotKeyTimer.Stop()
     TimeFrm.form_id = 2
     TimeFrm.ShowDialog()
+  End Sub
+
+  Private Sub SettingBtn_MouseClick(sender As Object, e As MouseEventArgs) Handles SettingBtn.MouseClick
+    If e.Button = Windows.Forms.MouseButtons.Left Then
+      HotKeyTimer.Stop()
+      SettingsFrm.ShowDialog()
+    End If
   End Sub
 
   'Function Clicker
 
   Private Sub HotKeyTimer_Tick(sender As Object, e As EventArgs) Handles HotKeyTimer.Tick
+    Dim config As JObject = GetSettings("config.mcc")
+
+    If disable = False Then
+      LblInfo.Text = String.Format("Press {0} to Start", config("key_play")("string"))
+    Else
+      LblInfo.Text = String.Format("Press {0} to Enabled", config("key_disable")("string"))
+    End If
+
     ' Main
-    If KeyPressIs({Keys.F11, Keys.ControlKey}) Then
-      While GetAsyncKeyState(Keys.F11)
+    If KeyPressIs(config("key_change_click")("value").ToObject(Of Integer())) Then
+      While GetAsyncKeyState(config("key_change_click")("value")(0))
       End While
 
-    ElseIf KeyPressIs({Keys.F11}) Then
-      While GetAsyncKeyState(Keys.F11)
+      If AFK = False Then ChangeClick()
+
+    ElseIf KeyPressIs(config("key_disable")("value").ToObject(Of Integer())) Then
+      While GetAsyncKeyState(config("key_disable")("value")(0))
       End While
 
-      AutoClicker()
+      disable = Not disable
+
+    ElseIf KeyPressIs(config("key_play")("value").ToObject(Of Integer())) Then
+      While GetAsyncKeyState(config("key_play")("value")(0))
+      End While
+
+      If disable = False Then AutoClicker()
     End If
   End Sub
 
@@ -261,5 +307,60 @@ Public Class MainFrm
         LongClickTimer.Start()
         ClickTimer.Stop()
     End Select
+  End Sub
+
+  Private Sub MainFrm_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+    Dim config As JObject = GetSettings("config.mcc")
+    If ClosedForm = True Then
+      Return
+    End If
+
+    If CBool(config("notify")) = True Then
+      e.Cancel = True
+      Hide()
+    End If
+  End Sub
+
+  Private Sub ExitToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ExitToolStripMenuItem.Click
+    ClosedForm = True
+    Application.Exit()
+  End Sub
+
+  Private Sub NotifyIcon1_MouseDoubleClick(sender As Object, e As MouseEventArgs) Handles NotifyIcon1.MouseDoubleClick
+    Show()
+    donationNotive()
+  End Sub
+
+  Private Sub OpenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpenToolStripMenuItem.Click
+    Show()
+    donationNotive()
+  End Sub
+
+  Private Sub MainFrm_Shown(sender As Object, e As EventArgs) Handles MyBase.Shown
+    donationNotive()
+  End Sub
+
+  Private previousWindowState As FormWindowState?
+
+  Protected Overrides Sub OnSizeChanged(ByVal e As EventArgs)
+    If Me.Bounds = Me.RestoreBounds AndAlso previousWindowState.HasValue AndAlso previousWindowState.Value = FormWindowState.Minimized Then
+      donationNotive()
+    End If
+
+    previousWindowState = Me.WindowState
+    MyBase.OnSizeChanged(e)
+  End Sub
+
+  Private Sub donationNotive()
+    Dim config As JObject = GetSettings("config.mcc")
+
+    If CBool(config("donate")) = True Then
+      Dim result As DialogResult = MessageBox.Show("Donate this app for support developer!", "Donate",
+                      MessageBoxButtons.OKCancel, MessageBoxIcon.Information)
+
+      If result = DialogResult.OK Then
+        Process.Start("")
+      End If
+    End If
   End Sub
 End Class

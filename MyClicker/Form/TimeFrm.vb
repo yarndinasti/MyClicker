@@ -1,7 +1,6 @@
 ﻿Imports Newtonsoft.Json.Linq
 
 Public Class TimeFrm
-
   Public form_id As Integer
 
   Private Sub TimeFrm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -52,6 +51,10 @@ Public Class TimeFrm
       Dim confirm As DialogResult = MessageBox.Show("Do you want to exit without saving your settings?",
                                                     "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
       e.Cancel = CBool(confirm = DialogResult.No)
+    End If
+
+    If e.Cancel = False Then
+      MainFrm.HotKeyTimer.Start()
     End If
   End Sub
 End Class
