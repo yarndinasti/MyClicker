@@ -203,6 +203,8 @@
   <ItemGroup>
     <Content Include="icon.ico" />
     <Content Include="LINCENSE.txt" />
+    <None Include="Resources\disable-left-cursor.ico" />
+    <None Include="Resources\disable-right-cursor.ico" />
     <Content Include="Software Protector.exe" />
     <None Include="Resources\active-left-cursor.ico" />
     <None Include="Resources\active-right-cursor.ico" />

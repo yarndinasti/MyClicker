@@ -31,14 +31,12 @@ Module init
     SaveSettings("user.umc", "click", CInt(MainFrm.MousePic.Tag))
 
     If MainFrm.MousePic.Tag = "1" Then
-      MainFrm.MousePic.Image = My.Resources.right_8
       MainFrm.MousePic.Tag = "0"
-      MainFrm.NotifyIcon1.Icon = My.Resources.right_cursor
     ElseIf MainFrm.MousePic.Tag = "0" Then
-      MainFrm.MousePic.Image = My.Resources.left_8
       MainFrm.MousePic.Tag = "1"
-      MainFrm.NotifyIcon1.Icon = My.Resources.left_cursor
     End If
+
+    ACpassiveClick()
   End Sub
 
   Public Sub ResetRepeatView()
@@ -106,10 +104,24 @@ Module init
   Public Sub ACpassiveClick()
     If MainFrm.MousePic.Tag = "1" Then
       MainFrm.MousePic.Image = My.Resources.left_8
-      MainFrm.NotifyIcon1.Icon = My.Resources.left_cursor
     ElseIf MainFrm.MousePic.Tag = "0" Then
       MainFrm.MousePic.Image = My.Resources.right_8
-      MainFrm.NotifyIcon1.Icon = My.Resources.right_cursor
+    End If
+
+    If MainFrm.disable = True Then
+      Select Case MainFrm.MousePic.Tag
+        Case "0"
+          MainFrm.NotifyIcon1.Icon = My.Resources.disable_right_cursor
+        Case "1"
+          MainFrm.NotifyIcon1.Icon = My.Resources.disable_left_cursor
+      End Select
+    Else
+      Select Case MainFrm.MousePic.Tag
+        Case "0"
+          MainFrm.NotifyIcon1.Icon = My.Resources.right_cursor
+        Case "1"
+          MainFrm.NotifyIcon1.Icon = My.Resources.left_cursor
+      End Select
     End If
   End Sub
 End Module

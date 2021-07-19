@@ -161,6 +161,7 @@ Public Class SettingsFrm
   End Sub
 
   Private Sub InstagramLink_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles InstagramLink.LinkClicked
+    Process.Start("https://instagram.com/yansaan_")
   End Sub
 
   Private Sub FacebookLink_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles FacebookLink.LinkClicked
@@ -192,7 +193,7 @@ Public Class SettingsFrm
   End Sub
 
   Private Sub SteamlabsLink_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles SteamlabsLink.LinkClicked
-
+    Process.Start("https://streamlabs.com/ianardiansyahianongplus")
   End Sub
 
   Private Sub WebsiteLink_LinkClicked(sender As Object, e As LinkLabelLinkClickedEventArgs) Handles WebsiteLink.LinkClicked

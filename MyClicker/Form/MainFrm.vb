@@ -13,7 +13,7 @@ Public Class MainFrm
 
   Dim AFK As Boolean = False
   Dim ClosedForm As Boolean = False
-  Dim disable As Boolean = False
+  Public disable As Boolean = False
 
   Public timeDelay As Integer = 0
   Public timePress As Integer = 0
@@ -371,5 +371,6 @@ Public Class MainFrm
   Private Sub disabledClick()
     disable = Not disable
     DisabledClickToolStripMenuItem.Checked = disable
+    ACpassiveClick()
   End Sub
 End Class
