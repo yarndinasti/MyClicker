@@ -22,17 +22,31 @@ Public Class TimeFrm
   Private Sub TimeBtn_Click(sender As Object, e As EventArgs) Handles TimeBtn.Click
     Dim variable As String = IIf(form_id = 1, "duration", "duration_click")
 
-    If ComboTime.SelectedIndex = 0 AndAlso NumTime.Value > 20000 Then
-      MessageBox.Show("Duration delay must be between 250ms - 20000ms", "Error",
+    If ComboTime.SelectedIndex = 0 Then
+      If NumTime.Value > 20000 Then
+        MessageBox.Show(String.Format("Duration delay must be between {0}ms - 20000ms",
+                        IIf(form_id = 1, "30", "100")), "Error",
                      MessageBoxButtons.OK, MessageBoxIcon.Error)
 
-      Return
+        Return
+      End If
 
-    ElseIf ComboTime.SelectedIndex = 0 AndAlso NumTime.Value < 250 Then
-      MessageBox.Show("Duration delay must be between 250ms - 20000ms", "Error",
+      Select Case form_id
+        Case 1
+          If NumTime.Value < 30 Then
+            MessageBox.Show("Duration delay must be between 30ms - 20000ms", "Error",
                      MessageBoxButtons.OK, MessageBoxIcon.Error)
 
-      Return
+            Return
+          End If
+        Case 2
+          If NumTime.Value < 100 Then
+            MessageBox.Show("Duration delay must be between 100ms - 20000ms", "Error",
+                     MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+            Return
+          End If
+      End Select
     End If
 
     SaveSettings("user.umc", variable, NumTime.Value, "value")
